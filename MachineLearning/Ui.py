@@ -65,15 +65,12 @@ def classify_text():
         messagebox.showwarning("Предупреждение", "Пожалуйста, введите текст.")
         return
 
-    # Предобработка текста
     cleaned_text = preprocess_text(user_input)
     vectorized_text = vectorizer.transform([cleaned_text])
 
-    # Предсказание категории
     prediction = lr_model.predict(vectorized_text)[0]
     category = label_encoder.inverse_transform([prediction])[0]
 
-    # Результат
     result_label.config(text=f"Категория: {category}", font=("Times New Roman", 16, "bold"), fg="green")
 
 
